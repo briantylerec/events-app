@@ -1,0 +1,33 @@
+[versions]
+agp="8.13.2"
+kotlin="2.3.21"
+composeBom="2024.10.00"
+hilt="2.58"
+activityCompose="1.9.3"
+lifecycle="2.8.7"
+sharedUi="0.1.6"
+sharedSdk="0.2.2"
+
+[plugins]
+android-application={id="com.android.application",version.ref="agp"}
+kotlin-android={id="org.jetbrains.kotlin.android",version.ref="kotlin"}
+kotlin-compose={id="org.jetbrains.kotlin.plugin.compose",version.ref="kotlin"}
+kotlin-kapt={id="org.jetbrains.kotlin.kapt",version.ref="kotlin"}
+hilt={id="com.google.dagger.hilt.android",version.ref="hilt"}
+
+[libraries]
+compose-bom={module="androidx.compose:compose-bom",version.ref="composeBom"}
+compose-ui={module="androidx.compose.ui:ui"}
+compose-material3={module="androidx.compose.material3:material3"}
+compose-activity={module="androidx.activity:activity-compose",version.ref="activityCompose"}
+compose-preview={module="androidx.compose.ui:ui-tooling-preview"}
+lifecycle-viewmodel={module="androidx.lifecycle:lifecycle-viewmodel-compose",version.ref="lifecycle"}
+lifecycle-viewmodel-ktx={module="androidx.lifecycle:lifecycle-viewmodel-ktx",version.ref="lifecycle"}
+lifecycle-runtime={module="androidx.lifecycle:lifecycle-runtime-compose",version.ref="lifecycle"}
+hilt-android={module="com.google.dagger:hilt-android",version.ref="hilt"}
+hilt-compiler={module="com.google.dagger:hilt-compiler",version.ref="hilt"}
+hilt-navigation={module="androidx.hilt:hilt-navigation-compose",version="1.2.0"}
+
+shared-ui = { module = "com.redbull.lab:shared-ui", version.ref = "sharedUi" }
+shared-sdk = { module = "com.redbull.lab:android-sdk", version.ref = "sharedSdk" }
+kotlin-metadata = { module = "org.jetbrains.kotlin:kotlin-metadata-jvm", version.ref = "kotlin" }

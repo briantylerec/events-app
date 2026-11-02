@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="events_title">Eventos destacados</string>
+    <string name="events_subtitle">Selección de muestra ordenada por precio</string>
+    <string name="empty_highlights">No hay elementos para mostrar.</string>
+    <string name="load_error">No se pudo cargar el contenido.</string>
+    <string name="product_details">$%1$s • %2$s</string>
+</resources>
