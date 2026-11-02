@@ -531,13 +531,12 @@ jobs:
 
 **En el proyecto de la aplicación Events, en la ruta `.gitignore`, crea el archivo si no existe y pega el siguiente código.**
 
-**Explicación:** Evita versionar salidas de build, cachés y configuración local.
+**Explicación:** Ignora salidas de build, cachés, configuración local y archivos del IDE. `gradle.properties` se versiona porque contiene solo opciones no secretas del build.
 
 ````text
 **/.gradle/
 **/build/
 local.properties
-gradle.properties
 *.iml
 .idea/
 .DS_Store
@@ -562,7 +561,7 @@ Los endpoints Maven predeterminados son `briantylerec/shared-ui-library` y `bria
 
 Para probar bibliotecas locales, ejecuta `./gradlew publishToMavenLocal` en ambos proyectos y compila con `./gradlew -PuseMavenLocal=true :app:testDebugUnitTest :app:assembleDebug`. Al omitir el flag, Gradle usa las versiones publicadas.
 
-Para descargar paquetes de GitHub desde tu equipo, crea `gradle.properties` en la raíz de este proyecto con tu usuario y un PAT classic con `read:packages`:
+Para descargar paquetes de GitHub desde tu equipo, guarda tu usuario y PAT classic con `read:packages` en `~/.gradle/gradle.properties` (fuera del repositorio):
 
 ```properties
 gpr.user=TU_USUARIO_GITHUB
@@ -583,7 +582,7 @@ Este repositorio de app es independiente de `shared-ui-library` y `shared-sdk`; 
 
 Concede a este repositorio acceso **Read** en los paquetes UI y SDK. El SDK declara `android-data` y `android-domain` como dependencias transitivas; si GitHub los muestra como paquetes separados, concede también acceso a esos paquetes. El workflow descarga con `GITHUB_TOKEN` y `packages: read`.
 
-Para cambiar una dependencia a otra release, actualiza su versión en `gradle/libs.versions.toml` después de que se publique. Para probar fuentes locales, publica UI y SDK con `publishToMavenLocal` y ejecuta Gradle con `-PuseMavenLocal=true`. En uso normal no pases ese flag; así se consumen las versiones de GitHub Packages. Guarda un PAT local solo en `gradle.properties` en la raíz de este proyecto, nunca en Git.
+Para cambiar una dependencia a otra release, actualiza su versión en `gradle/libs.versions.toml` después de que se publique. Para probar fuentes locales, publica UI y SDK con `publishToMavenLocal` y ejecuta Gradle con `-PuseMavenLocal=true`. En uso normal no pases ese flag; así se consumen las versiones de GitHub Packages. Guarda el PAT local solo en `~/.gradle/gradle.properties`, nunca en el repositorio.
 
 ## Comandos útiles desde este proyecto
 

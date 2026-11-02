@@ -14,14 +14,14 @@ Normal builds use the published packages. To test local changes, run `./gradlew 
 ./gradlew -PuseMavenLocal=true :app:testDebugUnitTest :app:assembleDebug
 ```
 
-That flag adds Maven Local ahead of GitHub Packages for this build. Omit it to use the published packages. For local GitHub Packages authentication, create `gradle.properties` en la raíz de este proyecto with your GitHub username and a classic PAT with `read:packages`:
+That flag adds Maven Local ahead of GitHub Packages for this build. Omit it to use the published packages. For local GitHub Packages authentication, store your GitHub username and a classic PAT with `read:packages` in `~/.gradle/gradle.properties`, outside the repository:
 
 ```properties
 gpr.user=YOUR_GITHUB_USERNAME
 gpr.key=YOUR_CLASSIC_PAT
 ```
 
-Never commit credentials. The Maven URL is a Gradle registry endpoint, not a browser page. `.github/workflows/android-ci.yml` builds the app on pushes and pull requests.
+Never commit credentials. The project `gradle.properties` contains only non-secret Android/Gradle build settings and is versioned so CI receives them. The Maven URL is a Gradle registry endpoint, not a browser page. `.github/workflows/android-ci.yml` builds the app on pushes and pull requests.
 
 ## Kotlin, Hilt y KAPT
 
